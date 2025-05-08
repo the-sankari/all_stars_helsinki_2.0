@@ -39,7 +39,7 @@ export default function PlayersPage() {
       await axios.delete(`http://localhost:3001/players/${id}`);
       toast.success("Player deleted");
       fetchPlayers();
-    } catch (err) {
+    } catch {
       toast.error("Failed to delete player");
     }
   };
@@ -64,7 +64,7 @@ export default function PlayersPage() {
       toast.success("Player updated");
       setEditId(null);
       fetchPlayers();
-    } catch (err) {
+    } catch {
       toast.error("Failed to update player");
     }
   };
@@ -89,7 +89,10 @@ export default function PlayersPage() {
 
       <ul className="space-y-4 mb-8">
         {players.map((player) => (
-          <li key={player.id} className="text-black bg-white p-4 rounded shadow relative">
+          <li
+            key={player.id}
+            className="text-black bg-white p-4 rounded shadow relative"
+          >
             {editId === player.id ? (
               <div className="space-y-2">
                 <input
