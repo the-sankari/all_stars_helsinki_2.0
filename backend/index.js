@@ -1,58 +1,75 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./firebase");
+const adminRoutes = require("./middleware/admin");
 
 const app = express();
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Gett all Players
-app.get("/players", async (req, res) => {
+// Routes
+app.use("/admin", adminRoutes);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send({ error: "Something broke!" });
+});
+
+// API Routes
+// Get all Players
+app.get("/players", async (req, res, next) => {
   try {
     const snapshot = await db.collection("players").get();
     const players = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
-    res.send(players);
+    res.json(players);
   } catch (err) {
-    res.status(500).send({ error: err.message });
+    next(err);
   }
 });
 
 // POST new player
-
-app.post("/players", async (req, res) => {
+app.post("/players", async (req, res, next) => {
   try {
     const data = req.body;
     const ref = await db.collection("players").add(data);
-    res.send({ id: ref.id });
+    res.status(201).json({ id: ref.id });
   } catch (err) {
-    res.status(500).send({ error: err.message });
+    next(err);
   }
 });
 
 // PUT update player
-app.put("/players/:id", async (req, res) => {
+app.put("/players/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const updatedData = req.body;
     await db.collection("players").doc(id).update(updatedData);
-    res.send({ success: true });
+    res.json({ success: true });
   } catch (err) {
-    res.status(500).send({ error: err.message });
+    next(err);
   }
 });
 
 // DELETE a player by ID
-app.delete("/players/:id", async (req, res) => {
+app.delete("/players/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     await db.collection("players").doc(id).delete();
-    res.send({ success: true });
+    res.json({ success: true });
   } catch (err) {
-    res.status(500).send({ error: err.message });
+    next(err);
   }
+});
+
+// Health check endpoint
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
 });
 
 const PORT = process.env.PORT || 3001;
