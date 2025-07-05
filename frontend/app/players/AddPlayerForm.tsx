@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
+import api from "../../lib/axios";
 import toast from "react-hot-toast";
 
 type AddPlayerFormProps = {
@@ -47,7 +47,7 @@ export default function AddPlayerForm({ onAdd }: AddPlayerFormProps) {
     setSuccess(false);
 
     try {
-      await axios.post("http://localhost:3001/players", formData);
+      await api.post("/api/players", formData);
       toast.success("Player added!");
       setFormData(initialPlayer);
       onAdd(); // Refresh list

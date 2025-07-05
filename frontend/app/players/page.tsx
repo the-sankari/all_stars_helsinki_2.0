@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../lib/axios";
 import toast from "react-hot-toast";
 import AddPlayerForm from "./AddPlayerForm";
 
@@ -24,11 +24,12 @@ export default function PlayersPage() {
 
   const fetchPlayers = async () => {
     try {
-      const res = await axios.get<Player[]>("http://localhost:3001/players");
-      setPlayers(res.data);
+      const res = await api.get<Player[]>("/api/players");
+      setPlayers(res.data || []); // Ensure it's always an array
     } catch (err) {
       console.error("Error fetching players:", err);
       setError("Failed to load players.");
+      setPlayers([]); // Set empty array on error
     } finally {
       setLoading(false);
     }
@@ -36,7 +37,7 @@ export default function PlayersPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:3001/players/${id}`);
+      await api.delete(`/api/players/${id}`);
       toast.success("Player deleted");
       fetchPlayers();
     } catch {
@@ -60,7 +61,7 @@ export default function PlayersPage() {
   const saveEdit = async () => {
     if (!editId) return;
     try {
-      await axios.put(`http://localhost:3001/players/${editId}`, editData);
+      await api.put(`/api/players/${editId}`, editData);
       toast.success("Player updated");
       setEditId(null);
       fetchPlayers();
@@ -88,91 +89,92 @@ export default function PlayersPage() {
       {error && <p className="text-red-600">{error}</p>}
 
       <ul className="space-y-4 mb-8">
-        {players.map((player) => (
-          <li
-            key={player.id}
-            className="text-black bg-white p-4 rounded shadow relative"
-          >
-            {editId === player.id ? (
-              <div className="space-y-2">
-                <input
-                  type="text"
-                  name="name"
-                  value={editData.name || ""}
-                  onChange={handleEditChange}
-                  className="p-2 border rounded w-full"
-                  placeholder="Name"
-                />
-                <input
-                  type="number"
-                  name="number"
-                  value={editData.number || ""}
-                  onChange={handleEditChange}
-                  className="p-2 border rounded w-full"
-                  placeholder="Number"
-                />
-                <input
-                  type="text"
-                  name="position"
-                  value={editData.position || ""}
-                  onChange={handleEditChange}
-                  className="p-2 border rounded w-full"
-                  placeholder="Position"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  value={editData.email || ""}
-                  onChange={handleEditChange}
-                  className="p-2 border rounded w-full"
-                  placeholder="Email"
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  value={editData.phone || ""}
-                  onChange={handleEditChange}
-                  className="p-2 border rounded w-full"
-                  placeholder="Phone"
-                />
-                <div className="flex gap-2 mt-2">
-                  <button
-                    onClick={saveEdit}
-                    className="bg-green-600 text-white px-4 py-1 rounded"
-                  >
-                    Save
-                  </button>
-                  <button
-                    onClick={cancelEdit}
-                    className="bg-gray-400 text-white px-4 py-1 rounded"
-                  >
-                    Cancel
-                  </button>
+        {Array.isArray(players) &&
+          players.map((player) => (
+            <li
+              key={player.id}
+              className="text-black bg-white p-4 rounded shadow relative"
+            >
+              {editId === player.id ? (
+                <div className="space-y-2">
+                  <input
+                    type="text"
+                    name="name"
+                    value={editData.name || ""}
+                    onChange={handleEditChange}
+                    className="p-2 border rounded w-full"
+                    placeholder="Name"
+                  />
+                  <input
+                    type="number"
+                    name="number"
+                    value={editData.number || ""}
+                    onChange={handleEditChange}
+                    className="p-2 border rounded w-full"
+                    placeholder="Number"
+                  />
+                  <input
+                    type="text"
+                    name="position"
+                    value={editData.position || ""}
+                    onChange={handleEditChange}
+                    className="p-2 border rounded w-full"
+                    placeholder="Position"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    value={editData.email || ""}
+                    onChange={handleEditChange}
+                    className="p-2 border rounded w-full"
+                    placeholder="Email"
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={editData.phone || ""}
+                    onChange={handleEditChange}
+                    className="p-2 border rounded w-full"
+                    placeholder="Phone"
+                  />
+                  <div className="flex gap-2 mt-2">
+                    <button
+                      onClick={saveEdit}
+                      className="bg-green-600 text-white px-4 py-1 rounded"
+                    >
+                      Save
+                    </button>
+                    <button
+                      onClick={cancelEdit}
+                      className="bg-gray-400 text-white px-4 py-1 rounded"
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <>
-                <button
-                  onClick={() => handleDelete(player.id)}
-                  className="absolute top-2 right-2 text-red-500 hover:text-red-700"
-                >
-                  ✕
-                </button>
-                <button
-                  onClick={() => startEdit(player)}
-                  className="absolute top-2 right-8 text-blue-500 hover:text-blue-700"
-                >
-                  ✎
-                </button>
-                <h2 className="text-xl font-semibold">{player.name}</h2>
-                <p>Number: #{player.number}</p>
-                <p>Position: {player.position}</p>
-                <p>Email: {player.email}</p>
-                <p>Phone: {player.phone}</p>
-              </>
-            )}
-          </li>
-        ))}
+              ) : (
+                <>
+                  <button
+                    onClick={() => handleDelete(player.id)}
+                    className="absolute top-2 right-2 text-red-500 hover:text-red-700"
+                  >
+                    ✕
+                  </button>
+                  <button
+                    onClick={() => startEdit(player)}
+                    className="absolute top-2 right-8 text-blue-500 hover:text-blue-700"
+                  >
+                    ✎
+                  </button>
+                  <h2 className="text-xl font-semibold">{player.name}</h2>
+                  <p>Number: #{player.number}</p>
+                  <p>Position: {player.position}</p>
+                  <p>Email: {player.email}</p>
+                  <p>Phone: {player.phone}</p>
+                </>
+              )}
+            </li>
+          ))}
       </ul>
 
       <AddPlayerForm onAdd={fetchPlayers} />

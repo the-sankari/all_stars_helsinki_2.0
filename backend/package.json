@@ -5,6 +5,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "mock": "node index.mock.js",
+    "dev:mock": "nodemon index.mock.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "kajol sutra dhar",
