@@ -23,7 +23,7 @@ export const fetchPlayers = createAsyncThunk(
     try {
       const players = await apiService.getPlayers();
       return players;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch players");
     }
   }
@@ -35,7 +35,7 @@ export const fetchFeaturedPlayer = createAsyncThunk(
     try {
       const player = await apiService.getFeaturedPlayer();
       return player;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch featured player");
     }
   }
@@ -47,7 +47,7 @@ export const fetchPlayerById = createAsyncThunk(
     try {
       const player = await apiService.getPlayerById(id);
       return player;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch player");
     }
   }

@@ -21,7 +21,7 @@ export const fetchTestimonials = createAsyncThunk(
     try {
       const testimonials = await apiService.getTestimonials();
       return testimonials;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch testimonials");
     }
   }
@@ -33,7 +33,7 @@ export const fetchFeaturedTestimonials = createAsyncThunk(
     try {
       const testimonials = await apiService.getFeaturedTestimonials();
       return testimonials;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch featured testimonials");
     }
   }

@@ -25,7 +25,7 @@ export const fetchMatches = createAsyncThunk(
     try {
       const matches = await apiService.getMatches();
       return matches;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch matches");
     }
   }
@@ -37,7 +37,7 @@ export const fetchUpcomingMatches = createAsyncThunk(
     try {
       const matches = await apiService.getUpcomingMatches();
       return matches;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch upcoming matches");
     }
   }
@@ -49,7 +49,7 @@ export const fetchRecentMatches = createAsyncThunk(
     try {
       const matches = await apiService.getRecentMatches();
       return matches;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch recent matches");
     }
   }
@@ -61,7 +61,7 @@ export const fetchNextMatch = createAsyncThunk(
     try {
       const match = await apiService.getNextMatch();
       return match;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch next match");
     }
   }

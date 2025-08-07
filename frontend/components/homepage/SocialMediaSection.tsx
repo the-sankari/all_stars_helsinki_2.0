@@ -2,6 +2,13 @@
 
 import { useAppSelector } from "../../lib/hooks";
 import type { RootState } from "../../lib/store";
+import type { SocialMediaPost } from "../../lib/types";
+
+interface SocialMediaState {
+  latestPosts: SocialMediaPost[];
+  loading: boolean;
+  error: string | null;
+}
 import {
   Instagram,
   Facebook,
@@ -24,7 +31,7 @@ import {
 export default function SocialMediaSection() {
   const { latestPosts, loading, error } = useAppSelector(
     (state: RootState) => state.socialMedia
-  ) as any;
+  ) as SocialMediaState;
 
   // Helper function to format time ago
   const getTimeAgo = (dateString: string) => {
@@ -155,7 +162,7 @@ export default function SocialMediaSection() {
                 Unable to Load Social Media
               </h3>
               <p className="text-gray-600 mb-4">
-                We're having trouble loading social media posts right now.
+                We&apos;re having trouble loading social media posts right now.
               </p>
               <p className="text-sm text-red-600">Error: {error}</p>
             </div>
@@ -172,7 +179,7 @@ export default function SocialMediaSection() {
               </p>
             </div>
           ) : (
-            latestPosts.slice(0, 2).map((post: any, index: number) => {
+            latestPosts.slice(0, 2).map((post: SocialMediaPost) => {
               const platformInfo = getPlatformInfo(post.platform);
               return (
                 <div
@@ -241,7 +248,7 @@ export default function SocialMediaSection() {
                       </div>
                       <div className="flex items-center justify-between mb-3">
                         <p className="text-sm text-gray-600">
-                          Latest: "{post.content.slice(0, 50)}..."
+                          Latest: &ldquo;{post.content.slice(0, 50)}...&rdquo;
                         </p>
                         <div className="flex items-center space-x-3 text-xs text-gray-500">
                           <span className="flex items-center">
@@ -259,7 +266,7 @@ export default function SocialMediaSection() {
                     <div className="space-y-4">
                       <div className="bg-gray-50 rounded-lg p-4">
                         <p className="text-sm text-gray-700">
-                          "{post.content}"
+                          &ldquo;{post.content}&rdquo;
                         </p>
                         <div className="flex items-center justify-between mt-3">
                           <p className="text-xs text-gray-500">

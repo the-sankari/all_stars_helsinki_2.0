@@ -7,7 +7,6 @@ import {
   Zap,
   Utensils,
   Car,
-  Award,
   Heart,
   Star,
   Globe,
@@ -17,13 +16,29 @@ import {
   Trophy,
 } from "lucide-react";
 
+// Types for sponsor data
+interface Sponsor {
+  id: string;
+  name: string;
+  sponsorshipLevel: string;
+  sponsorshipType: string;
+  description?: string;
+  website?: string;
+}
+
+interface SponsorsState {
+  sponsors: Sponsor[];
+  loading: boolean;
+  error: string | null;
+}
+
 export default function SponsorsSection() {
   const { sponsors, loading, error } = useAppSelector(
     (state: RootState) => state.sponsors
-  ) as any;
+  ) as SponsorsState;
 
   // Helper function to get icon based on sponsorship type or name
-  const getSponsorIcon = (sponsor: any) => {
+  const getSponsorIcon = (sponsor: Sponsor) => {
     const type = sponsor.sponsorshipType?.toLowerCase() || "";
     const name = sponsor.name?.toLowerCase() || "";
 
@@ -141,7 +156,7 @@ export default function SponsorsSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {sponsors.map((sponsor: any, index: number) => {
+          {sponsors.map((sponsor: Sponsor, index: number) => {
             const levelInfo = getSponsorshipLevelInfo(sponsor.sponsorshipLevel);
 
             return (
@@ -194,7 +209,8 @@ export default function SponsorsSection() {
           <div className="text-center py-8">
             <Heart className="w-16 h-16 text-gray-400 mx-auto mb-4" />
             <p className="text-gray-600 text-lg">
-              We're always looking for amazing partners to join our journey!
+              We&apos;re always looking for amazing partners to join our
+              journey!
             </p>
           </div>
         )}

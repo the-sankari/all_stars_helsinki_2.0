@@ -4,10 +4,28 @@ import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../lib/hooks";
 import { fetchUpcomingTraining } from "../../lib/features/trainingSlice";
 import type { RootState } from "../../lib/store";
+import type { TrainingSession } from "../../lib/types";
+
+// Types for training state
+interface TrainingState {
+  upcomingSessions: TrainingSession[];
+  loading: boolean;
+  error: string | null;
+}
+
+// Type for weekly schedule items
+interface WeeklyScheduleItem {
+  day: string;
+  activity: string;
+  time: string;
+  highlight: boolean;
+}
 
 export default function TrainingScheduleSection() {
   const dispatch = useAppDispatch();
-  const training = useAppSelector((state: RootState) => state.training) as any;
+  const training = useAppSelector(
+    (state: RootState) => state.training
+  ) as TrainingState;
   const { upcomingSessions, loading, error } = training;
 
   useEffect(() => {
@@ -54,7 +72,7 @@ export default function TrainingScheduleSection() {
   const generateWeeklySchedule = () => {
     // If we have training data, try to generate from it
     if (upcomingSessions.length > 0) {
-      const weeklyPattern = upcomingSessions.map((session: any) => {
+      const weeklyPattern = upcomingSessions.map((session: TrainingSession) => {
         const date = new Date(session.dateTime);
         const dayNames = [
           "Sunday",
@@ -131,38 +149,46 @@ export default function TrainingScheduleSection() {
               📅 Weekly Schedule
             </h3>
             <div className="space-y-4">
-              {weeklySchedule.map((session: any, index: number) => (
-                <div
-                  key={index}
-                  className={`flex justify-between items-center py-3 px-4 rounded-lg shadow-sm ${
-                    session.highlight ? "bg-yellow-400" : "bg-white"
-                  }`}
-                >
-                  <div>
-                    <div
-                      className={`font-medium ${
-                        session.highlight ? "text-purple-800" : "text-gray-800"
-                      }`}
-                    >
-                      {session.day}
-                    </div>
-                    <div
-                      className={`text-sm ${
-                        session.highlight ? "text-purple-700" : "text-gray-600"
-                      }`}
-                    >
-                      {session.activity}
-                    </div>
-                  </div>
+              {weeklySchedule.map(
+                (session: WeeklyScheduleItem, index: number) => (
                   <div
-                    className={`font-bold ${
-                      session.highlight ? "text-purple-800" : "text-purple-600"
+                    key={index}
+                    className={`flex justify-between items-center py-3 px-4 rounded-lg shadow-sm ${
+                      session.highlight ? "bg-yellow-400" : "bg-white"
                     }`}
                   >
-                    {session.time}
+                    <div>
+                      <div
+                        className={`font-medium ${
+                          session.highlight
+                            ? "text-purple-800"
+                            : "text-gray-800"
+                        }`}
+                      >
+                        {session.day}
+                      </div>
+                      <div
+                        className={`text-sm ${
+                          session.highlight
+                            ? "text-purple-700"
+                            : "text-gray-600"
+                        }`}
+                      >
+                        {session.activity}
+                      </div>
+                    </div>
+                    <div
+                      className={`font-bold ${
+                        session.highlight
+                          ? "text-purple-800"
+                          : "text-purple-600"
+                      }`}
+                    >
+                      {session.time}
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              )}
             </div>
           </div>
 

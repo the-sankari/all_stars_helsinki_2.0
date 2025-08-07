@@ -19,7 +19,7 @@ export const fetchTeamStats = createAsyncThunk(
     try {
       const stats = await apiService.getTeamStats();
       return stats;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch team stats");
     }
   }

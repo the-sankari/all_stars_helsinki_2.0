@@ -21,7 +21,7 @@ export const fetchSocialMediaPosts = createAsyncThunk(
     try {
       const posts = await apiService.getSocialMediaPosts();
       return posts;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch social media posts");
     }
   }
@@ -33,7 +33,7 @@ export const fetchLatestSocialPosts = createAsyncThunk(
     try {
       const posts = await apiService.getLatestSocialPosts(limit);
       return posts;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch latest social posts");
     }
   }

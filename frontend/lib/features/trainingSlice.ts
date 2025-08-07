@@ -21,7 +21,7 @@ export const fetchTrainingSessions = createAsyncThunk(
     try {
       const sessions = await apiService.getTrainingSessions();
       return sessions;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch training sessions");
     }
   }
@@ -33,7 +33,7 @@ export const fetchUpcomingTraining = createAsyncThunk(
     try {
       const sessions = await apiService.getUpcomingTraining();
       return sessions;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch upcoming training");
     }
   }

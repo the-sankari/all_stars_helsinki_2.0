@@ -2,11 +2,19 @@
 
 import { useAppSelector } from "../../lib/hooks";
 import type { RootState } from "../../lib/store";
+import type { Testimonial } from "../../lib/types";
+
+// Types for testimonials state
+interface TestimonialsState {
+  featuredTestimonials: Testimonial[];
+  loading: boolean;
+  error: string | null;
+}
 
 export default function TestimonialsSection() {
   const { featuredTestimonials, loading, error } = useAppSelector(
     (state: RootState) => state.testimonials
-  ) as any;
+  ) as TestimonialsState;
 
   // Helper function to get initials from name
   const getInitials = (name: string) => {
@@ -51,7 +59,7 @@ export default function TestimonialsSection() {
     if (featuredTestimonials.length > 0) {
       const avgRating =
         featuredTestimonials.reduce(
-          (sum: number, t: any) => sum + t.rating,
+          (sum: number, t: Testimonial) => sum + t.rating,
           0
         ) / featuredTestimonials.length;
       return [
@@ -121,7 +129,7 @@ export default function TestimonialsSection() {
                 Unable to Load Testimonials
               </h3>
               <p className="text-gray-600 mb-4">
-                We're having trouble loading testimonials right now.
+                We&apos;re having trouble loading testimonials right now.
               </p>
               <p className="text-sm text-red-600">Error: {error}</p>
             </div>
@@ -136,34 +144,40 @@ export default function TestimonialsSection() {
               </p>
             </div>
           ) : (
-            displayTestimonials.map((testimonial: any, index: number) => (
-              <div
-                key={testimonial.id || index}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-              >
-                <div className="flex items-center mb-4">
-                  <div
-                    className={`w-12 h-12 ${getAvatarColor(
-                      index
-                    )} rounded-full flex items-center justify-center ${getAvatarTextColor(
-                      index
-                    )} font-bold text-xl mr-4`}
-                  >
-                    {getInitials(testimonial.name)}
+            displayTestimonials.map(
+              (testimonial: Testimonial, index: number) => (
+                <div
+                  key={testimonial.id || index}
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  <div className="flex items-center mb-4">
+                    <div
+                      className={`w-12 h-12 ${getAvatarColor(
+                        index
+                      )} rounded-full flex items-center justify-center ${getAvatarTextColor(
+                        index
+                      )} font-bold text-xl mr-4`}
+                    >
+                      {getInitials(testimonial.name)}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-800">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-sm text-gray-600">
+                        {testimonial.role}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-gray-800">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
+                  <div className="text-yellow-400 mb-3">
+                    {"⭐".repeat(testimonial.rating)}
                   </div>
+                  <p className="text-gray-700 italic">
+                    &ldquo;{testimonial.content}&rdquo;
+                  </p>
                 </div>
-                <div className="text-yellow-400 mb-3">
-                  {"⭐".repeat(testimonial.rating)}
-                </div>
-                <p className="text-gray-700 italic">"{testimonial.content}"</p>
-              </div>
-            ))
+              )
+            )
           )}
         </div>
 

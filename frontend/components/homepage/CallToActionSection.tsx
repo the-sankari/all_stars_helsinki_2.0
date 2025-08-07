@@ -6,9 +6,9 @@ export default function CallToActionSection() {
           Ready to Join the Action?
         </h2>
         <p className="text-xl text-purple-700 mb-8 max-w-2xl mx-auto">
-          Whether you're an experienced player or just starting your football
-          journey, there's a place for you in All Stars Helsinki. Come be part
-          of our football family!
+          Whether you&apos;re an experienced player or just starting your
+          football journey, there&apos;s a place for you in All Stars Helsinki.
+          Come be part of our football family!
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a

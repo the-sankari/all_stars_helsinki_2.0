@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 import { useAuthGuard } from "@/hooks/useAuth";
 
 export default function AdminPage() {
-  const { loading, authorized } = useAuthGuard();
+  const { loading } = useAuthGuard();
 
   if (loading) return <div className="text-center mt-20">Loading...</div>;
 

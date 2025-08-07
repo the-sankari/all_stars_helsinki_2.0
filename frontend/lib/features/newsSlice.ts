@@ -23,7 +23,7 @@ export const fetchNews = createAsyncThunk(
     try {
       const news = await apiService.getPublishedNews();
       return news;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch news");
     }
   }
@@ -35,7 +35,7 @@ export const fetchLatestNews = createAsyncThunk(
     try {
       const news = await apiService.getLatestNews(limit);
       return news;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch latest news");
     }
   }

@@ -21,7 +21,7 @@ export const fetchGallery = createAsyncThunk(
     try {
       const gallery = await apiService.getGallery();
       return gallery;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch gallery");
     }
   }
@@ -33,7 +33,7 @@ export const fetchFeaturedGallery = createAsyncThunk(
     try {
       const gallery = await apiService.getFeaturedGallery();
       return gallery;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch featured gallery");
     }
   }

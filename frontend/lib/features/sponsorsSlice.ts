@@ -19,7 +19,7 @@ export const fetchSponsors = createAsyncThunk(
     try {
       const sponsors = await apiService.getSponsors();
       return sponsors;
-    } catch (error) {
+    } catch {
       return rejectWithValue("Failed to fetch sponsors");
     }
   }

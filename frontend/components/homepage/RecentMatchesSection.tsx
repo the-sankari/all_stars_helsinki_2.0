@@ -2,11 +2,31 @@
 
 import { useAppSelector } from "../../lib/hooks";
 import type { RootState } from "../../lib/store";
+import type { Match } from "../../lib/types";
+
+interface FormattedMatch {
+  date: string;
+  result: string;
+  resultStyle: string;
+  homeTeam: string;
+  homeStatus: string;
+  awayTeam: string;
+  awayStatus: string;
+  score: string;
+  goals: string;
+  venue: string;
+}
+
+interface MatchesState {
+  recentMatches: Match[];
+  loading: boolean;
+  error: string | null;
+}
 
 export default function RecentMatchesSection() {
   const { recentMatches, loading, error } = useAppSelector(
     (state: RootState) => state.matches
-  ) as any;
+  ) as MatchesState;
 
   // Helper function to format date
   const formatDate = (dateString: string) => {
@@ -19,7 +39,7 @@ export default function RecentMatchesSection() {
   };
 
   // Helper function to format match data for display
-  const formatMatch = (match: any) => {
+  const formatMatch = (match: Match) => {
     const isHomeGame = match.isHomeGame;
     const homeTeam = isHomeGame ? "All Stars Helsinki" : match.opponent;
     const awayTeam = isHomeGame ? match.opponent : "All Stars Helsinki";
@@ -48,11 +68,11 @@ export default function RecentMatchesSection() {
 
     // Extract goal scorers from events
     const goalEvents =
-      match.events?.filter((event: any) => event.type === "goal") || [];
+      match.events?.filter((event) => event.type === "goal") || [];
     const goals =
       goalEvents.length > 0
         ? goalEvents
-            .map((event: any) => `${event.minute}' ${event.description}`)
+            .map((event) => `${event.minute}' ${event.description}`)
             .join(", ")
         : "No goals recorded";
 
@@ -122,7 +142,7 @@ export default function RecentMatchesSection() {
                 Unable to Load Match Results
               </h3>
               <p className="text-gray-600 mb-4">
-                We're having trouble loading recent matches right now.
+                We&apos;re having trouble loading recent matches right now.
               </p>
               <p className="text-sm text-red-600">Error: {error}</p>
             </div>
@@ -137,7 +157,7 @@ export default function RecentMatchesSection() {
               </p>
             </div>
           ) : (
-            displayMatches.map((match: any, index: number) => (
+            displayMatches.map((match: FormattedMatch, index: number) => (
               <div
                 key={index}
                 className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
