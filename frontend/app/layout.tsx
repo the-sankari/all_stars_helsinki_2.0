@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 import Header from "./Header";
 import Footer from "./Footer";
+import { ReduxProvider } from "./components/ReduxProvider";
 
 export const metadata: Metadata = {
   title: "All Stars Helsinki",
@@ -22,12 +23,14 @@ export default function RootLayout({
         className="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen"
         suppressHydrationWarning
       >
-        <Header />
-        <Toaster position="top-right" reverseOrder={false} />
-        <main className="flex-1 w-12/12 max-w-7xl mt-30 mx-auto">
-          {children}
-        </main>
-        <Footer />
+        <ReduxProvider>
+          <Header />
+          <Toaster position="top-right" reverseOrder={false} />
+          <main className="flex-1 w-12/12 max-w-7xl mt-30 mx-auto">
+            {children}
+          </main>
+          <Footer />
+        </ReduxProvider>
       </body>
     </html>
   );

@@ -1,6 +1,22 @@
 "use client";
 
 import Head from "next/head";
+import { useEffect } from "react";
+
+// Redux imports
+import { useAppDispatch } from "../lib/hooks";
+import { fetchFeaturedPlayer } from "../lib/features/playersSlice";
+import {
+  fetchNextMatch,
+  fetchRecentMatches,
+} from "../lib/features/matchesSlice";
+import { fetchLatestNews } from "../lib/features/newsSlice";
+import { fetchTeamStats } from "../lib/features/teamStatsSlice";
+import { fetchFeaturedGallery } from "../lib/features/gallerySlice";
+import { fetchSponsors } from "../lib/features/sponsorsSlice";
+import { fetchLatestSocialPosts } from "../lib/features/socialMediaSlice";
+import { fetchFeaturedTestimonials } from "../lib/features/testimonialsSlice";
+import { fetchUpcomingTraining } from "../lib/features/trainingSlice";
 
 // Import all homepage components
 import HeroSection from "@/components/homepage/HeroSection";
@@ -18,6 +34,23 @@ import SponsorsSection from "@/components/homepage/SponsorsSection";
 import BackToTopButton from "@/components/shared/BackToTopButton";
 
 export default function HomePage() {
+  const dispatch = useAppDispatch();
+
+  // Fetch all data when component mounts
+  useEffect(() => {
+    // Fetch data for all homepage sections
+    dispatch(fetchFeaturedPlayer());
+    dispatch(fetchNextMatch());
+    dispatch(fetchRecentMatches());
+    dispatch(fetchLatestNews(3));
+    dispatch(fetchTeamStats());
+    dispatch(fetchFeaturedGallery());
+    dispatch(fetchSponsors());
+    dispatch(fetchLatestSocialPosts(6));
+    dispatch(fetchFeaturedTestimonials());
+    dispatch(fetchUpcomingTraining());
+  }, [dispatch]);
+
   return (
     <>
       <Head>
@@ -78,7 +111,7 @@ export default function HomePage() {
       <SocialMediaSection />
       <NewsletterSection />
       <SponsorsSection />
-      
+
       {/* Back to Top Button */}
       <BackToTopButton />
     </>

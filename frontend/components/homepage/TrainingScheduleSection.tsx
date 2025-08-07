@@ -1,30 +1,116 @@
+"use client";
+
+import { useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../../lib/hooks";
+import { fetchUpcomingTraining } from "../../lib/features/trainingSlice";
+import type { RootState } from "../../lib/store";
+
 export default function TrainingScheduleSection() {
-  const weeklySchedule = [
-    {
-      day: "Tuesday",
-      activity: "Technical Training",
-      time: "18:00 - 20:00",
-      highlight: false,
-    },
-    {
-      day: "Thursday",
-      activity: "Fitness & Conditioning",
-      time: "19:00 - 20:30",
-      highlight: false,
-    },
-    {
-      day: "Saturday",
-      activity: "Match Practice",
-      time: "10:00 - 12:00",
-      highlight: true,
-    },
-    {
-      day: "Sunday",
-      activity: "Team Building",
-      time: "14:00 - 16:00",
-      highlight: false,
-    },
-  ];
+  const dispatch = useAppDispatch();
+  const training = useAppSelector((state: RootState) => state.training) as any;
+  const { upcomingSessions, loading, error } = training;
+
+  useEffect(() => {
+    dispatch(fetchUpcomingTraining());
+  }, [dispatch]);
+
+  // Helper function to format date
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    if (date.toDateString() === today.toDateString()) {
+      return "Today";
+    } else if (date.toDateString() === tomorrow.toDateString()) {
+      return "Tomorrow";
+    } else {
+      return date.toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "short",
+        day: "numeric",
+      });
+    }
+  };
+
+  // Helper function to format time
+  const formatTime = (dateString: string, duration: number) => {
+    const startTime = new Date(dateString);
+    const endTime = new Date(startTime.getTime() + duration * 60000);
+
+    const formatTimeString = (date: Date) => {
+      return date.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
+    };
+
+    return `${formatTimeString(startTime)} - ${formatTimeString(endTime)}`;
+  };
+
+  // Generate weekly schedule from training sessions or use fallback
+  const generateWeeklySchedule = () => {
+    // If we have training data, try to generate from it
+    if (upcomingSessions.length > 0) {
+      const weeklyPattern = upcomingSessions.map((session: any) => {
+        const date = new Date(session.dateTime);
+        const dayNames = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        const dayName = dayNames[date.getDay()];
+
+        return {
+          day: dayName,
+          activity: session.title,
+          time: formatTime(session.dateTime, session.duration),
+          highlight: session.type === "team-training",
+        };
+      });
+
+      return weeklyPattern;
+    }
+
+    // Fallback to static schedule if no dynamic data
+    return [
+      {
+        day: "Tuesday",
+        activity: "Technical Training",
+        time: "18:00 - 20:00",
+        highlight: false,
+      },
+      {
+        day: "Thursday",
+        activity: "Fitness & Conditioning",
+        time: "19:00 - 20:30",
+        highlight: false,
+      },
+      {
+        day: "Saturday",
+        activity: "Match Practice",
+        time: "10:00 - 12:00",
+        highlight: true,
+      },
+      {
+        day: "Sunday",
+        activity: "Team Building",
+        time: "14:00 - 16:00",
+        highlight: false,
+      },
+    ];
+  };
+
+  const weeklySchedule = generateWeeklySchedule();
+
+  // Get next upcoming session
+  const nextSession = upcomingSessions.length > 0 ? upcomingSessions[0] : null;
 
   return (
     <section className="bg-white py-20">
@@ -45,7 +131,7 @@ export default function TrainingScheduleSection() {
               📅 Weekly Schedule
             </h3>
             <div className="space-y-4">
-              {weeklySchedule.map((session, index) => (
+              {weeklySchedule.map((session: any, index: number) => (
                 <div
                   key={index}
                   className={`flex justify-between items-center py-3 px-4 rounded-lg shadow-sm ${
@@ -85,24 +171,50 @@ export default function TrainingScheduleSection() {
             <h3 className="text-xl font-bold text-purple-800 mb-6 flex items-center">
               ⚡ Next Training
             </h3>
-            <div className="bg-white rounded-lg p-6 shadow-sm mb-4">
-              <div className="text-2xl font-bold text-purple-600 mb-2">
-                Tomorrow - Tuesday
+            {loading ? (
+              <div className="bg-white rounded-lg p-6 shadow-sm mb-4">
+                <div className="animate-pulse">
+                  <div className="h-8 bg-gray-300 rounded w-48 mb-2"></div>
+                  <div className="h-6 bg-gray-300 rounded w-32 mb-1"></div>
+                  <div className="h-5 bg-gray-300 rounded w-24 mb-3"></div>
+                  <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded w-3/4 mb-4"></div>
+                  <div className="h-6 bg-gray-300 rounded w-32"></div>
+                </div>
               </div>
-              <div className="text-lg text-gray-700 mb-1">
-                Technical Training Session
+            ) : error ? (
+              <div className="bg-white rounded-lg p-6 shadow-sm mb-4 text-center">
+                <p className="text-red-600">
+                  Error loading training data: {error}
+                </p>
               </div>
-              <div className="text-purple-600 font-medium mb-3">
-                18:00 - 20:00
+            ) : nextSession ? (
+              <div className="bg-white rounded-lg p-6 shadow-sm mb-4">
+                <div className="text-2xl font-bold text-purple-600 mb-2">
+                  {formatDate(nextSession.dateTime)}
+                </div>
+                <div className="text-lg text-gray-700 mb-1">
+                  {nextSession.title}
+                </div>
+                <div className="text-purple-600 font-medium mb-3">
+                  {formatTime(nextSession.dateTime, nextSession.duration)}
+                </div>
+                <div className="text-sm text-gray-600 mb-4">
+                  📍 {nextSession.location}
+                  <br />
+                  Focus: {nextSession.focus.join(", ")}
+                </div>
+                <div className="bg-green-100 text-green-800 px-3 py-2 rounded-full text-sm font-medium inline-block">
+                  ✓ {nextSession.attendance.required.length} players invited
+                </div>
               </div>
-              <div className="text-sm text-gray-600 mb-4">
-                📍 Helsinki Sports Center, Field A<br />
-                Focus: Ball control, passing drills, set pieces
+            ) : (
+              <div className="bg-white rounded-lg p-6 shadow-sm mb-4 text-center">
+                <p className="text-gray-600">
+                  No upcoming training sessions scheduled
+                </p>
               </div>
-              <div className="bg-green-100 text-green-800 px-3 py-2 rounded-full text-sm font-medium inline-block">
-                ✓ 18 players confirmed
-              </div>
-            </div>
+            )}
             <div className="space-y-2 text-sm text-gray-600">
               <div className="flex items-center">
                 <span className="mr-2">👕</span>

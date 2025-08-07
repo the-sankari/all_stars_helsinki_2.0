@@ -1,9 +1,22 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../../lib/hooks";
+import { fetchNextMatch } from "../../lib/features/matchesSlice";
 import MatchCard from "@/components/shared/MatchCard";
+import type { RootState } from "../../lib/store";
 
 export default function HeroSection() {
+  const dispatch = useAppDispatch();
+  const { nextMatch, loading, error } = useAppSelector(
+    (state: RootState) => state.matches
+  );
+
+  useEffect(() => {
+    dispatch(fetchNextMatch());
+  }, [dispatch]);
+
   return (
     <section
       className="relative bg-primary text-white min-h-screen flex flex-col"
@@ -40,15 +53,36 @@ export default function HeroSection() {
 
         {/* Match Card - Bottom Right (Desktop) / Bottom Center (Mobile) */}
         <div className="w-full flex justify-center lg:justify-end lg:items-end">
-          <MatchCard
-            opponent="Finn-Bangla"
-            tournament="Finn-Bangla Tournament"
-            date="August 15, 2025"
-            time="10:00 AM"
-            location="Helsinki Sports Center"
-            matchDate="2025-08-15T10:00:00"
-            className="w-full max-w-sm lg:max-w-md"
-          />
+          {loading ? (
+            <div className="w-full max-w-sm lg:max-w-md bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+              <div className="animate-pulse">
+                <div className="h-6 bg-gray-300 rounded w-32 mb-2"></div>
+                <div className="h-8 bg-gray-300 rounded w-48 mb-4"></div>
+                <div className="h-4 bg-gray-300 rounded w-24"></div>
+              </div>
+            </div>
+          ) : error ? (
+            <div className="w-full max-w-sm lg:max-w-md bg-red-500/20 backdrop-blur-sm rounded-2xl p-6 text-center border border-red-400">
+              <p className="text-red-200">Error loading match data: {error}</p>
+            </div>
+          ) : nextMatch ? (
+            <MatchCard
+              opponent={nextMatch.opponent}
+              tournament={nextMatch.tournament}
+              date={new Date(nextMatch.dateTime).toLocaleDateString()}
+              time={new Date(nextMatch.dateTime).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+              location={nextMatch.location}
+              matchDate={nextMatch.dateTime}
+              className="w-full max-w-sm lg:max-w-md"
+            />
+          ) : (
+            <div className="w-full max-w-sm lg:max-w-md bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
+              <p className="text-white/80">No upcoming matches</p>
+            </div>
+          )}
         </div>
       </div>
     </section>
