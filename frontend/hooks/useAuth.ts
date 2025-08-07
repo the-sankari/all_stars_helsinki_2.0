@@ -11,6 +11,14 @@ export function useAuthGuard() {
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
+    // Check if Firebase auth is initialized
+    if (!auth) {
+      console.warn('Firebase auth not initialized');
+      setLoading(false);
+      router.push("/login");
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setAuthorized(true);
