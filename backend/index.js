@@ -20,7 +20,7 @@ app.use((err, req, res, next) => {
 
 // API Routes
 // Get all Players
-app.get("/players", async (req, res, next) => {
+app.get("/api/players", async (req, res, next) => {
   try {
     const snapshot = await db.collection("players").get();
     const players = snapshot.docs.map((doc) => ({
@@ -34,7 +34,7 @@ app.get("/players", async (req, res, next) => {
 });
 
 // POST new player
-app.post("/players", async (req, res, next) => {
+app.post("/api/players", async (req, res, next) => {
   try {
     const data = req.body;
     const ref = await db.collection("players").add(data);
@@ -45,7 +45,7 @@ app.post("/players", async (req, res, next) => {
 });
 
 // PUT update player
-app.put("/players/:id", async (req, res, next) => {
+app.put("/api/players/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const updatedData = req.body;
@@ -57,7 +57,7 @@ app.put("/players/:id", async (req, res, next) => {
 });
 
 // DELETE a player by ID
-app.delete("/players/:id", async (req, res, next) => {
+app.delete("/api/players/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     await db.collection("players").doc(id).delete();

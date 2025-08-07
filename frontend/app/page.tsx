@@ -1,70 +1,86 @@
-import Image from "next/image";
+"use client";
+
+import Head from "next/head";
+
+// Import all homepage components
+import HeroSection from "@/components/homepage/HeroSection";
+import WelcomeSection from "@/components/homepage/WelcomeSection";
+import TeamStatsSection from "@/components/homepage/TeamStatsSection";
+import NewsSection from "@/components/homepage/NewsSection";
+import TrainingScheduleSection from "@/components/homepage/TrainingScheduleSection";
+import TestimonialsSection from "@/components/homepage/TestimonialsSection";
+import PlayerSpotlightSection from "@/components/homepage/PlayerSpotlightSection";
+import CallToActionSection from "@/components/homepage/CallToActionSection";
+import RecentMatchesSection from "@/components/homepage/RecentMatchesSection";
+import SocialMediaSection from "@/components/homepage/SocialMediaSection";
+import NewsletterSection from "@/components/homepage/NewsletterSection";
+import SponsorsSection from "@/components/homepage/SponsorsSection";
+import BackToTopButton from "@/components/shared/BackToTopButton";
 
 export default function HomePage() {
   return (
     <>
-      {/* HERO SECTION */}
-      <section
-        className="relative bg-primary text-light font-heading min-h-[70vh] flex items-center justify-center hero-image"
-        style={{
-          backgroundImage: "url(/img/hero.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/70 z-0" />
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 pt-24 pb-12">
-          {/* Logo */}
-          <div className="mb-8">
-            <div className="flex flex-col items-center">
-              <Image
-                src="/img/logo.png"
-                alt="All Stars Helsinki"
-                width={300}
-                height={300}
-                className="w-[300px] h-[300px]"
-              />
-            </div>
-          </div>
-          {/* Next Match Card */}
-          <div className="absolute right-4 left-auto -bottom-16 md:right-24 md:-bottom-12 bg-[#16335B] text-light rounded-xl shadow-lg px-8 py-6 w-[320px] max-w-full text-left border-4 border-[#16335B]">
-            <div className="font-bold text-md mb-2 tracking-wide uppercase">
-              Next Match
-            </div>
-            <div className="text-2xl font-bold mb-1 leading-tight">
-              Finn-Bangla
-              <br />
-              Tournament
-            </div>
-            <div className="text-base mt-2">
-              August 15, 2025 &bull; 10:00 AM
-            </div>
-          </div>
-        </div>
-      </section>
+      <Head>
+        <title>
+          All Stars Helsinki - Amateur Football Team | For the Love of the Game
+        </title>
+        <meta
+          name="description"
+          content="Join All Stars Helsinki, an amateur football team in Helsinki driven by passion, teamwork, and the love of the game. Training sessions, matches, and community events."
+        />
+        <meta
+          name="keywords"
+          content="All Stars Helsinki, football team, amateur football, Helsinki sports, football training, team sports, football community"
+        />
+        <meta name="author" content="All Stars Helsinki" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      {/* WELCOME SECTION */}
-      <section className="bg-light py-20 font-body">
-        <div className="max-w-2xl mx-auto px-4 text-left">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4 uppercase leading-tight">
-            Welcome to
-            <br />
-            All Stars Helsinki
-          </h2>
-          <p className="text-lg text-dark mb-8">
-            All Stars Helsinki is an amateur football team driven by passion,
-            teamwork, and the love of the game.
-          </p>
-          <a
-            href="/join"
-            className="inline-block border-2 border-yellow-400 text-primary font-bold py-3 px-10 rounded-full hover:bg-yellow-400 hover:text-dark transition text-lg shadow-sm tracking-wide"
-          >
-            JOIN US
-          </a>
-        </div>
-      </section>
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://allstarshelsinki.fi/" />
+        <meta
+          property="og:title"
+          content="All Stars Helsinki - Amateur Football Team"
+        />
+        <meta
+          property="og:description"
+          content="Join our passionate football community in Helsinki. Training, matches, and team spirit for the love of the game."
+        />
+        <meta property="og:image" content="/img/hero.png" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://allstarshelsinki.fi/" />
+        <meta
+          property="twitter:title"
+          content="All Stars Helsinki - Amateur Football Team"
+        />
+        <meta
+          property="twitter:description"
+          content="Join our passionate football community in Helsinki. Training, matches, and team spirit for the love of the game."
+        />
+        <meta property="twitter:image" content="/img/hero.png" />
+
+        <link rel="canonical" href="https://allstarshelsinki.fi/" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      {/* All Homepage Sections */}
+      <HeroSection />
+      <WelcomeSection />
+      <TeamStatsSection />
+      <NewsSection />
+      <TrainingScheduleSection />
+      <TestimonialsSection />
+      <PlayerSpotlightSection />
+      <CallToActionSection />
+      <RecentMatchesSection />
+      <SocialMediaSection />
+      <NewsletterSection />
+      <SponsorsSection />
+      
+      {/* Back to Top Button */}
+      <BackToTopButton />
     </>
   );
 }
