@@ -3,7 +3,7 @@
 import { useAuthGuard } from "@/hooks/useAuth";
 
 // Force dynamic rendering to prevent static generation
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default function AdminPage() {
   const { loading } = useAuthGuard();

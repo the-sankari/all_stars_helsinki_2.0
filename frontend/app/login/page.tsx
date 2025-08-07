@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { auth } from "@/lib/firebase";
 
 // Force dynamic rendering to prevent static generation
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -17,12 +17,12 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!auth) {
       setError("Authentication service is not available");
       return;
     }
-    
+
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,

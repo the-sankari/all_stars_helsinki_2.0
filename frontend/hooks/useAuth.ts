@@ -13,7 +13,7 @@ export function useAuthGuard() {
   useEffect(() => {
     // Check if Firebase auth is initialized
     if (!auth) {
-      console.warn('Firebase auth not initialized');
+      console.warn("Firebase auth not initialized");
       setLoading(false);
       router.push("/login");
       return;
