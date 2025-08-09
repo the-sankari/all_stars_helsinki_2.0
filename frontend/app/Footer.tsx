@@ -11,6 +11,7 @@ export default function Footer() {
             width={100}
             height={80}
             className="w-24 h-20 object-contain"
+            style={{ width: "auto" }}
           />
         </div>
         <div className="text-sm">

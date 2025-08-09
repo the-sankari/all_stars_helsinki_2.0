@@ -451,22 +451,336 @@
       "createdAt": "2024-05-20T12:00:00.000Z",
       "updatedAt": "2024-08-07T14:30:00.000Z",
       "createdBy": "admin_001"
+    },
+    {
+      "id": "player_016",
+      "name": "Debashis Deb",
+      "number": 16,
+      "position": "MID",
+      "email": "debashis.deb@allstarshelsinki.com",
+      "phone": "+358 46 678 9012",
+      "age": 38,
+      "nationality": "Bangladeshi",
+      "height": "175cm",
+      "weight": "72kg",
+      "joinDate": "2024-06-15",
+      "stats": {
+        "gamesPlayed": 10,
+        "goals": 4,
+        "assists": 3,
+        "yellowCards": 0,
+        "redCards": 0,
+        "minutesPlayed": 900
+      },
+      "profileImage": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&crop=face",
+      "isActive": false,
+      "isInjured": false,
+      "injuryDetails": null,
+      "isFeatured": false,
+      "bio": "Talented midfielder with a keen eye for goal and excellent positioning.",
+      "createdAt": "2024-06-15T12:00:00.000Z",
+      "updatedAt": "2024-08-07T14:30:00.000Z",
+      "createdBy": "admin_001"
+    },
+    {
+      "id": "player_017",
+      "name": "Ishtyaq Ahmed",
+      "number": 17,
+      "position": "ST",
+      "email": "ishtyaq.ahmed@allstarshelsinki.com",
+      "phone": "+358 47 789 0123",
+      "age": 26,
+      "nationality": "Bangladeshi",
+      "height": "180cm",
+      "weight": "75kg",
+      "joinDate": "2024-07-01",
+      "stats": {
+        "gamesPlayed": 12,
+        "goals": 0,
+        "assists": 0,
+        "yellowCards": 1,
+        "redCards": 0,
+        "minutesPlayed": 1080
+      },
+      "profileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+      "isActive": true,
+      "isInjured": false,
+      "injuryDetails": null,
+      "isFeatured": false,
+      "bio": "Promising striker with great reflexes and finishing ability.",
+      "createdAt": "2024-07-01T10:00:00.000Z",
+      "updatedAt": "2024-08-07T14:30:00.000Z",
+      "createdBy": "admin_001"
+    },
+    {
+      "id": "player_018",
+      "name": "Jabed",
+      "number": 18,
+      "position": "DEF",
+      "email": "jabed@allstarshelsinki.com",
+      "phone": "+358 47 789 0123",
+      "age": 26,
+      "nationality": "Bangladeshi",
+      "height": "180cm",
+      "weight": "75kg",
+      "joinDate": "2024-07-01",
+      "stats": {
+        "gamesPlayed": 12,
+        "goals": 0,
+        "assists": 0,
+        "yellowCards": 1,
+        "redCards": 0,
+        "minutesPlayed": 1080
+      },
+      "profileImage": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+      "isActive": true,
+      "isInjured": false,
+      "injuryDetails": null,
+      "isFeatured": false,
+      "bio": "Promising defender with great tackling and positioning skills.",
+      "createdAt": "2024-07-01T10:00:00.000Z",
+      "updatedAt": "2024-08-07T14:30:00.000Z",
+      "createdBy": "admin_001"
+    },
+    {
+      "id": "player_019",
+      "name": "Mashrafee",
+      "number": 19,
+      "position": "ST",
+      "email": "mashrafee@allstarshelsinki.com",
+      "phone": "+358 47 789 0123",
+      "age": 26,
+      "nationality": "Bangladeshi",
+      "height": "180cm",
+      "weight": "75kg",
+      "joinDate": "2024-07-01",
+      "stats": {
+        "gamesPlayed": 12,
+        "goals": 0,
+        "assists": 0,
+        "yellowCards": 1,
+        "redCards": 0,
+        "minutesPlayed": 1080
+      },
+      "profileImage": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
+      "isActive": true,
+      "isInjured": false,
+      "injuryDetails": null,
+      "isFeatured": false,
+      "bio": "Promising striker with great reflexes and finishing ability.",
+      "createdAt": "2024-07-01T10:00:00.000Z",
+      "updatedAt": "2024-08-07T14:30:00.000Z",
+      "createdBy": "admin_001"
+    },
+    {
+      "id": "player_020",
+      "name": "Khalid Hasan Mithu",
+      "number": 20,
+      "position": "DEF",
+      "email": "khalid.hasan@allstarshelsinki.com",
+      "phone": "+358 47 789 0123",
+      "age": 26,
+      "nationality": "Bangladeshi",
+      "height": "180cm",
+      "weight": "75kg",
+      "joinDate": "2024-07-01",
+      "stats": {
+        "gamesPlayed": 12,
+        "goals": 0,
+        "assists": 0,
+        "yellowCards": 1,
+        "redCards": 0,
+        "minutesPlayed": 1080
+      },
+      "profileImage": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
+      "isActive": true,
+      "isInjured": false,
+      "injuryDetails": null,
+      "isFeatured": false,
+      "bio": "Promising defender with great tackling and positioning skills.",
+      "createdAt": "2024-07-01T10:00:00.000Z",
+      "updatedAt": "2024-08-07T14:30:00.000Z",
+      "createdBy": "admin_001"
+    },
+    {
+      "id": "player_021",
+      "name": "Tariqul Islam",
+      "number": 21,
+      "position": "MID",
+      "email": "tariqul.islam@allstarshelsinki.com",
+      "phone": "+358 47 789 0123",
+      "age": 35,
+      "nationality": "Bangladeshi",
+      "height": "180cm",
+      "weight": "75kg",
+      "joinDate": "2024-07-01",
+      "stats": {
+        "gamesPlayed": 12,
+        "goals": 0,
+        "assists": 0,
+        "yellowCards": 1,
+        "redCards": 0,
+        "minutesPlayed": 1080
+      },
+      "profileImage": "https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&h=400&fit=crop&crop=face",
+      "isActive": true,
+      "isInjured": false,
+      "injuryDetails": null,
+      "isFeatured": false,
+      "bio": "Promising midfielder with great vision and passing skills.",
+      "createdAt": "2024-07-01T10:00:00.000Z",
+      "updatedAt": "2024-08-07T14:30:00.000Z",
+      "createdBy": "admin_001"
+    }
+  ],
+  "squad": [
+    {
+      "id": "player_001",
+      "name": "Sultan Ahmed",
+      "position": "GK",
+      "number": 1,
+      "profileImage": "/img/players/sultan.png"
+    },
+    {
+      "id": "player_002",
+      "name": "Rayhan Hossein",
+      "position": "DEF",
+      "number": 2,
+      "profileImage": "/img/players/rayhan.png"
+    },
+    {
+      "id": "player_003",
+      "name": "Anwar Hossein",
+      "position": "DEF",
+      "number": 3,
+      "profileImage": "/img/players/anwar.png"
+    },
+    {
+      "id": "player_004",
+      "name": "Kajol Sutra Dhar",
+      "position": "DEF",
+      "number": 4,
+      "profileImage": "/img/players/kajol.png"
+    },
+    {
+      "id": "player_005",
+      "name": "Tahsin Ahmed",
+      "position": "DEF",
+      "number": 5,
+      "profileImage": "/img/players/tahsin.png"
+    },
+    {
+      "id": "player_006",
+      "name": "Khabir Uddin",
+      "position": "MID",
+      "number": 6,
+      "profileImage": "/img/players/khabir.png"
+    },
+    {
+      "id": "player_007",
+      "name": "Shuvo Ranjan Saha",
+      "position": "MID",
+      "number": 7,
+      "profileImage": "/img/players/shuvo.png"
+    },
+    {
+      "id": "player_008",
+      "name": "Jowel Rahman",
+      "position": "MID",
+      "number": 8,
+      "profileImage": "/img/players/jowel.png"
+    },
+    {
+      "id": "player_009",
+      "name": "Taqbir Hossein",
+      "position": "MID",
+      "number": 9,
+      "profileImage": "/img/players/taqbir.png"
+    },
+    {
+      "id": "player_010",
+      "name": "Omer Kaium",
+      "position": "ST",
+      "number": 10,
+      "profileImage": "/img/players/omer.png"
+    },
+    {
+      "id": "player_011",
+      "name": "Wahidur Rahaman Nissan",
+      "position": "ST",
+      "number": 11,
+      "profileImage": "/img/players/nissan.png"
+    },
+    {
+      "id": "player_012",
+      "name": "Joy Pramanik",
+      "position": "ST",
+      "number": 12,
+      "profileImage": "/img/players/joy.png"
+    },
+    {
+      "id": "player_013",
+      "name": "Tanvinur Rahman",
+      "position": "ST",
+      "number": 13,
+      "profileImage": "/img/players/tultul.png"
+    },
+    {
+      "id": "player_014",
+      "name": "Mahbur Rahman",
+      "position": "ST",
+      "number": 14,
+      "profileImage": "/img/players/mahbur.png"
+    },
+    {
+      "id": "player_015",
+      "name": "Akash Anwar",
+      "position": "ST",
+      "number": 15,
+      "profileImage": "/img/players/akash.png"
+    }
+  ],
+  "coaches": [
+    {
+      "id": "coach_001",
+      "name": "Gauranga Mondal",
+      "email": "gauranga.mondal@allstarshelsinki.com",
+      "phone": "+358 47 789 0123",
+      "age": 34,
+      "nationality": "Bangladeshi",
+      "bio": "Experienced coach with a strong tactical mind.",
+      "createdAt": "2024-07-01T10:00:00.000Z",
+      "updatedAt": "2024-08-07T14:30:00.000Z",
+      "createdBy": "admin_001"
+    },
+    {
+      "id": "coach_002",
+      "name": "unknown",
+      "email": "unknown@allstarshelsinki.com",
+      "phone": "+358 47 789 0123",
+      "age": 30,
+      "nationality": "Vietnamese",
+      "bio": "Talented coach with a focus on youth development.",
+      "createdAt": "2024-07-01T10:00:00.000Z",
+      "updatedAt": "2024-08-07T14:30:00.000Z",
+      "createdBy": "admin_001"
     }
   ],
 
   "matches": [
     {
       "id": "match_001",
-      "opponent": "Helsinki United",
-      "tournament": "Finn-Bangla Tournament",
-      "dateTime": "2025-08-15T10:00:00.000Z",
-      "location": "Helsinki Sports Center",
+      "opponent": "Turku Tigers",
+      "opponentLogo": "https://scontent.fqlf1-2.fna.fbcdn.net/v/t39.30808-6/470148429_592941540098902_8757362309998797839_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=jnifD0NFoS4Q7kNvwHIP2vF&_nc_oc=AdnGCE_WkHqRpVyTbd1ZTMWQKCqc7y1SScPuhSRYTOH4i9TQJ7LZEIdMYVUUeLMPfsavb865HWuRDcPw35fOAY9m&_nc_zt=23&_nc_ht=scontent.fqlf1-2.fna&_nc_gid=-r9QF4-doQ2GbPej6XWwcw&oh=00_AfXS9RVmORd6HZ_TxeM-fMyGfTTH9egw49HXMpt1jsk4fA&oe=689D3450",
+      "tournament": "Friendly Match",
+      "dateTime": "2025-08-09T20:00:00.000",
+      "location": "Kannelmäen Tekonurmikenttä",
       "venue": {
-        "name": "Helsinki Sports Center",
+        "name": "Kannelmäen Tekonurmikenttä",
         "address": "Urheilukatu 15, 00250 Helsinki, Finland",
         "coordinates": {
-          "lat": 60.1699,
-          "lng": 24.9384
+          "lat": 60.24357991850147,
+          "lng": 24.876355244047165
         }
       },
       "status": "upcoming",
@@ -484,7 +798,7 @@
     {
       "id": "match_002",
       "opponent": "Tampere FC",
-      "tournament": "Helsinki Premier League",
+      "tournament": "Finn-Bangla Tournament",
       "dateTime": "2024-08-03T15:30:00.000Z",
       "location": "Keskuspuisto Stadium",
       "venue": {
@@ -536,12 +850,12 @@
     {
       "id": "match_003",
       "opponent": "Vantaa Warriors",
-      "tournament": "Helsinki Premier League",
+      "tournament": "Finn-Bangla Tournament",
       "dateTime": "2024-07-28T18:00:00.000Z",
-      "location": "Vantaa Sports Complex",
+      "location": "Kalevan urheilukenttä",
       "venue": {
-        "name": "Vantaa Sports Complex",
-        "address": "Urheilutie 12, 01300 Vantaa, Finland",
+        "name": "Kalevan urheilukenttä",
+        "address": "Urheilutie 12, Kaleva, Finland",
         "coordinates": {
           "lat": 60.2934,
           "lng": 25.0378
@@ -579,7 +893,7 @@
     {
       "id": "news_001",
       "title": "Team Prepares for Championship Final",
-      "content": "The All Stars Helsinki team has been training intensively for the upcoming Finn-Bangla Tournament final. Coach Markus Lehto expressed confidence in the team's preparation and highlighted the players' dedication during this crucial period.\n\n'We've worked hard all season for this moment,' said Lehto. 'The players are in excellent form and ready to give their best performance.'\n\nThe final will take place at Helsinki Sports Center on August 15th, with kick-off at 10:00 AM. Tickets are still available for what promises to be an exciting match.",
+      "content": "The All Stars Helsinki team has been training intensively for the upcoming Finn-Bangla Tournament final. Coach Markus Lehto expressed confidence in the team's preparation and highlighted the players' dedication during this crucial period.\n\n'We've worked hard all season for this moment,' said Lehto. 'The players are in excellent form and ready to give their best performance.'\n\nThe final will take place at Kannelmäen Tekonurmikenttä on August 15th, with kick-off at 10:00 AM. Tickets are still available for what promises to be an exciting match.",
       "excerpt": "All Stars Helsinki gears up for the championship final with intensive training sessions and high team morale.",
       "category": "match-preview",
       "tags": ["championship", "training", "final", "finn-bangla-tournament"],
@@ -641,18 +955,34 @@
   "training_sessions": [
     {
       "id": "training_001",
-      "title": "Championship Final Preparation",
+      "title": "Finn-Bangla final practice match",
       "description": "Intensive training session focusing on set pieces and final third combinations for the upcoming championship final.",
-      "dateTime": "2025-08-09T10:00:00.000Z",
+      "dateTime": "2025-08-09T20:00:00.000",
       "duration": 120,
-      "location": "All Stars Training Ground",
+      "location": "Kannelmäen Tekonurmikenttä",
       "type": "team-training",
       "focus": ["set-pieces", "attacking", "tactical"],
       "intensity": "high",
       "attendance": {
         "required": ["player_001", "player_002", "player_003", "player_004"],
-        "attended": ["player_001", "player_002", "player_003"],
-        "absent": ["player_004"],
+        "attended": [
+          "player_001",
+          "player_002",
+          "player_003",
+          "player_004",
+          "player_005",
+          "player_006",
+          "player_007",
+          "player_008",
+          "player_009",
+          "player_010",
+          "player_011",
+          "player_012",
+          "player_013",
+          "player_014",
+          "player_015"
+        ],
+        "absent": [],
         "excused": []
       },
       "exercises": [
@@ -675,22 +1005,38 @@
       "status": "scheduled",
       "isPublic": true,
       "notes": "Focus on mental preparation and confidence building",
-      "createdAt": "2025-08-05T12:00:00.000Z",
-      "updatedAt": "2025-08-07T16:00:00.000Z",
+      "createdAt": "2025-08-05T12:00:00.000",
+      "updatedAt": "2025-08-07T16:00:00.000",
       "createdBy": "coach_001"
     },
     {
       "id": "training_002",
       "title": "Recovery Session",
       "description": "Light training session focused on recovery and injury prevention after the recent match.",
-      "dateTime": "2025-08-12T17:00:00.000Z",
+      "dateTime": "2025-08-16T20:00:00.000",
       "duration": 60,
-      "location": "All Stars Training Ground",
+      "location": "Kannelmäen Tekonurmikenttä",
       "type": "recovery",
       "focus": ["recovery", "fitness", "flexibility"],
       "intensity": "low",
       "attendance": {
-        "required": ["player_001", "player_002", "player_003", "player_004"],
+        "required": [
+          "player_001",
+          "player_002",
+          "player_003",
+          "player_004",
+          "player_005",
+          "player_006",
+          "player_007",
+          "player_008",
+          "player_009",
+          "player_010",
+          "player_011",
+          "player_012",
+          "player_013",
+          "player_014",
+          "player_015"
+        ],
         "attended": [],
         "absent": [],
         "excused": []
@@ -735,7 +1081,7 @@
       "points": 41
     },
     "league": {
-      "name": "Helsinki Premier League",
+      "name": "Finn-Bangla Tournament",
       "position": 2,
       "totalTeams": 12
     },
@@ -743,7 +1089,7 @@
       {
         "title": "League Runner-up",
         "date": "2024-07-15",
-        "description": "Finished 2nd in Helsinki Premier League"
+        "description": "Finished 2nd in Finn-Bangla Tournament"
       },
       {
         "title": "Finn-Bangla Tournament Finalist",
@@ -881,7 +1227,7 @@
       "id": "social_002",
       "platform": "facebook",
       "postId": "facebook-post-789012",
-      "content": "🏆 Championship final is just around the corner! Thank you for all the support from our amazing fans. See you at Helsinki Sports Center! #ChampionshipFinal #AllStarsHelsinki",
+      "content": "🏆 Championship final is just around the corner! Thank you for all the support from our amazing fans. See you at Kannelmäen Tekonurmikenttä! #ChampionshipFinal #AllStarsHelsinki",
       "imageUrl": "gs://all-stars-helsinki/social/championship-announcement.jpg",
       "postUrl": "https://facebook.com/allstarshelsinki/posts/789012",
       "likes": 89,
@@ -973,11 +1319,132 @@
     }
   ],
 
+  "management": [
+    {
+      "uid": "management_001",
+      "email": "hisbur.rahman@allstarshelsinki.com",
+      "displayName": "Hasibur Rahman",
+      "role": "management, player",
+      "permissions": ["read"],
+      "teamAccess": true,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+      "uid": "management_002",
+      "email": "akash.anwar@allstarshelsinki.com",
+      "displayName": "Akash Anwar",
+      "role": "management, player",
+      "permissions": ["read"],
+      "teamAccess": true,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+      "uid": "management_003",
+      "email": "wahidur.rahman@allstarshelsinki.com",
+      "displayName": "Wahidur Rahman",
+      "role": "management, player",
+      "permissions": ["read", "write"],
+      "teamAccess": true,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+      "uid": "management_004",
+      "email": "gauranga.mondal@allstarshelsinki.com",
+      "displayName": "Gauranga Mondal",
+      "role": "management, coach",
+      "permissions": ["read", "write"],
+      "teamAccess": true,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+      "uid": "management_005",
+      "email": "shuvo.saha@allstarshelsinki.com",
+      "displayName": "Shuvo Saha",
+      "role": "management, player, captain",
+      "permissions": ["read", "write"],
+      "teamAccess": true,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+      "uid": "management_006",
+      "email": "omer.kaium@allstarshelsinki.com",
+      "displayName": "Omer Kaium",
+      "role": "management, player",
+      "permissions": ["read"],
+      "teamAccess": true,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+      "uid": "management_007",
+      "email": "tahsin.ahmed@allstarshelsinki.com",
+      "displayName": "Tahsin Ahmed",
+      "role": "management, player",
+      "permissions": ["read"],
+      "teamAccess": true,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    }
+  ],
+  "members": [
+    {
+      "uid": "member_001",
+      "email": "member1@allstarshelsinki.com",
+      "displayName": "Debashis Deb",
+      "role": "player, member",
+      "permissions": ["read"],
+      "teamAccess": false,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+      "uid": "member_002",
+      "email": "memamun.rashid@allstarshelsinki.com",
+      "displayName": "Mamun Rashid",
+      "role": "member",
+      "permissions": ["read"],
+      "teamAccess": false,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+      "uid": "member_003",
+      "email": "muntasir@allstarshelsinki.com",
+      "displayName": "Muhammad Muntasir",
+      "role": "member",
+      "permissions": ["read"],
+      "teamAccess": false,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+      "uid": "member_004",
+      "email": "ahsan@allstarshelsinki.com",
+      "displayName": "Ahsan",
+      "role": "member",
+      "permissions": ["read"],
+      "teamAccess": false,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+      "uid": "member_005",
+      "email": "shadhin.quddus@allstarshelsinki.com",
+      "displayName": "Shadhin Quddus",
+      "role": "member",
+      "permissions": ["read"],
+      "teamAccess": false,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    },
+    {
+      "uid": "member_006",
+      "email": "mahinur.rahman@allstarshelsinki.com",
+      "displayName": "Mahinur Rahman",
+      "role": "member",
+      "permissions": ["read"],
+      "teamAccess": false,
+      "createdAt": "2024-01-01T10:00:00.000Z"
+    }
+  ],
   "users": [
     {
       "uid": "admin_001",
       "email": "admin@allstarshelsinki.com",
-      "displayName": "Pekka Virtanen",
+      "displayName": "Kajol Sutra Dhar",
       "role": "admin",
       "permissions": ["read", "write", "delete"],
       "teamAccess": true,
@@ -986,19 +1453,28 @@
     {
       "uid": "coach_001",
       "email": "coach@allstarshelsinki.com",
-      "displayName": "Markus Lehto",
+      "displayName": "Gauranga Mondal",
       "role": "coach",
       "permissions": ["read", "write"],
       "teamAccess": true,
       "createdAt": "2023-01-15T11:00:00.000Z"
     },
     {
-      "uid": "author_001",
-      "email": "maria.koskinen@sports.fi",
-      "displayName": "Maria Koskinen",
-      "role": "moderator",
+      "uid": "Manager_001",
+      "email": "wahidur.nissan@allstarshelsinki.com",
+      "displayName": "Wahidur Rahman Nissan",
+      "role": "Manager",
       "permissions": ["read", "write"],
-      "teamAccess": false,
+      "teamAccess": true,
+      "createdAt": "2024-03-01T12:00:00.000Z"
+    },
+    {
+      "uid": "Manager_002",
+      "email": "Ovi@allstarshelsinki.com",
+      "displayName": "Alif All Helal Ovi",
+      "role": "Manager",
+      "permissions": ["read", "write"],
+      "teamAccess": true,
       "createdAt": "2024-03-01T12:00:00.000Z"
     }
   ]

@@ -36,6 +36,7 @@ export interface Player {
 export interface Match {
   id: string;
   opponent: string;
+  opponentLogo?: string;
   tournament: string;
   dateTime: string;
   location: string;

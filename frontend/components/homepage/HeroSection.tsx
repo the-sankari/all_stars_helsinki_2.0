@@ -17,6 +17,24 @@ export default function HeroSection() {
     dispatch(fetchNextMatch());
   }, [dispatch]);
 
+  // Format date/time in Helsinki timezone
+  const formatMatchDate = (dateString: string) => {
+    return new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Helsinki",
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+    }).format(new Date(dateString));
+  };
+
+  const formatMatchTime = (dateString: string) => {
+    return new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Helsinki",
+      hour: "2-digit",
+      minute: "2-digit",
+    }).format(new Date(dateString));
+  };
+
   return (
     <section
       className="relative bg-primary text-white min-h-screen flex flex-col"
@@ -36,7 +54,7 @@ export default function HeroSection() {
           <div className="text-center space-y-6">
             {/* Logo */}
             <Image
-              src="/img/logo.png"
+              src="/img/logos/log_v_2.png"
               alt="All Stars Helsinki"
               width={300}
               height={300}
@@ -44,8 +62,18 @@ export default function HeroSection() {
               priority
             />
 
-            {/* Tagline */}
-            <div className="bg-yellow-400 text-purple-800 px-6 py-3 rounded-full font-bold text-sm md:text-base lg:text-lg tracking-wide inline-block shadow-lg">
+            {/* Tagline - Hero text style */}
+            <div
+              className="font-bold text-center mx-auto p-2 w-3/4 tracking-wide"
+              style={{
+                color: "#fffff0",
+                opacity: 0.8,
+                fontSize: "3rem",
+                fontWeight: "bold",
+                textAlign: "center",
+                mixBlendMode: "screen",
+              }}
+            >
               FOR THE LOVE OF THE GAME
             </div>
           </div>
@@ -69,13 +97,11 @@ export default function HeroSection() {
             <MatchCard
               opponent={nextMatch.opponent}
               tournament={nextMatch.tournament}
-              date={new Date(nextMatch.dateTime).toLocaleDateString()}
-              time={new Date(nextMatch.dateTime).toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
+              date={formatMatchDate(nextMatch.dateTime)}
+              time={formatMatchTime(nextMatch.dateTime)}
               location={nextMatch.location}
               matchDate={nextMatch.dateTime}
+              opponentLogo={nextMatch.opponentLogo}
               className="w-full max-w-sm lg:max-w-md"
             />
           ) : (
@@ -85,6 +111,16 @@ export default function HeroSection() {
           )}
         </div>
       </div>
+
+      {/* Tagline styling */}
+      <style jsx>{`
+        .tagline-text {
+          background: url("/img/logo.png") no-repeat center/cover; /* change to your image */
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+      `}</style>
     </section>
   );
 }
